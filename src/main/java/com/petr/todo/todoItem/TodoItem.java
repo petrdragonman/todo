@@ -40,6 +40,8 @@ public class TodoItem {
     public TodoItem() {
     }
 
+    
+
     public String getTitle() {
         return title;
     }
@@ -70,6 +72,10 @@ public class TodoItem {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 
