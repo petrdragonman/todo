@@ -1,5 +1,8 @@
 package com.petr.todo.todoItem;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -21,7 +24,9 @@ public class TodoItemService {
         
         return this.repo.save(newTodoItem);
     }
-    
-    // 2:13:00
+
+    public List<TodoItem> getAll() {
+        return this.repo.findAll();
+    }
     
 }

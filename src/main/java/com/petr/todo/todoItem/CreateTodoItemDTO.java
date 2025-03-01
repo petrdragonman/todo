@@ -13,11 +13,10 @@ public class CreateTodoItemDTO {
     @NotNull
     private Priority priority;
 
-    @NotBlank
+    @NotNull
     private boolean isDone;
 
     @NotNull
-    @Min(0)
     private Date created;
 
     public String getTitle() {
