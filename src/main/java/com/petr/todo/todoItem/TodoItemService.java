@@ -2,6 +2,8 @@ package com.petr.todo.todoItem;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 
@@ -9,17 +11,20 @@ import org.springframework.stereotype.Service;
 public class TodoItemService {
 
     private TodoItemRepository repo;
+    private ModelMapper mapper;
 
-    TodoItemService(TodoItemRepository repo) {
+    TodoItemService(TodoItemRepository repo, ModelMapper mapper) {
         this.repo = repo;
+        this.mapper = mapper;
     }
 
     public TodoItem createTodoItem(CreateTodoItemDTO data) {
-        TodoItem newTodoItem = new TodoItem();
-        newTodoItem.setTitle(data.getTitle().trim());
-        newTodoItem.setCreated(data.getCreated());
-        newTodoItem.setIsDone(data.getIsDone());
-        newTodoItem.setPriority(data.getPriority());  
+        // TodoItem newTodoItem = new TodoItem();
+        // newTodoItem.setTitle(data.getTitle().trim());
+        // newTodoItem.setCreated(data.getCreated());
+        // newTodoItem.setIsDone(data.getIsDone());
+        // newTodoItem.setPriority(data.getPriority());  
+        TodoItem newTodoItem = mapper.map(data, TodoItem.class);
         return this.repo.save(newTodoItem);
     }
 
