@@ -26,8 +26,7 @@
 
 ## Design Goals / Approach
 
-- Design goals
-- why did you implement this the way you did?
+- I chose to use ModelMapper in this project, mostly from learning perspective. I know that this is a small project to use a full benefit for ModelMapper.
 
 ---
 
