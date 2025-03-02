@@ -1,6 +1,7 @@
 package com.petr.todo.todoItem;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,10 @@ public class TodoItemService {
 
     public List<TodoItem> getAll() {
         return this.repo.findAll();
+    }
+
+    public Optional<TodoItem> getById(Long id) {
+        return this.repo.findById(id);
     }
     
 }
