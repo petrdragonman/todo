@@ -11,7 +11,7 @@ public class UpdateTodoItemDTO {
     
     private Priority priority;
     
-    private boolean isDone;
+    private Boolean isDone;
 
     private Date created;
 
@@ -31,13 +31,7 @@ public class UpdateTodoItemDTO {
         this.priority = priority;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean isDone) {
-        this.isDone = isDone;
-    }
+    
 
     public Date getCreated() {
         return created;
@@ -46,5 +40,12 @@ public class UpdateTodoItemDTO {
     public void setCreated(Date created) {
         this.created = created;
     }
-    
+
+    public Boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setIsDone(Boolean isDone) {
+        this.isDone = isDone;
+    }
 }

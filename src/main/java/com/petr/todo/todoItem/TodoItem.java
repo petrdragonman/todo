@@ -32,7 +32,7 @@ public class TodoItem {
     private Priority priority;
 
     @Column
-    private boolean isDone;
+    private Boolean isDone;
 
     @Column
     private Date created;
@@ -58,13 +58,19 @@ public class TodoItem {
         this.priority = priority;
     }
 
-    public boolean isDone() {
+    
+
+    public Boolean getIsDone() {
         return isDone;
     }
 
-    public void setDone(boolean isDone) {
+
+
+    public void setIsDone(Boolean isDone) {
         this.isDone = isDone;
     }
+
+
 
     public Date getCreated() {
         return created;

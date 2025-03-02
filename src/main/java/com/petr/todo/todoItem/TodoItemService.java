@@ -18,7 +18,7 @@ public class TodoItemService {
         TodoItem newTodoItem = new TodoItem();
         newTodoItem.setTitle(data.getTitle().trim());
         newTodoItem.setCreated(data.getCreated());
-        newTodoItem.setDone(data.isDone());
+        newTodoItem.setIsDone(data.getIsDone());
         newTodoItem.setPriority(data.getPriority());  
         return this.repo.save(newTodoItem);
     }
@@ -56,7 +56,7 @@ public class TodoItemService {
             foundTodoItem.setPriority(data.getPriority());
         }
         if(data.getPriority() != null) {
-            foundTodoItem.setDone(data.isDone());
+            foundTodoItem.setIsDone(data.getIsDone());
         }
 
         this.repo.save(foundTodoItem);

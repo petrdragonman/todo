@@ -12,7 +12,8 @@ public class CreateTodoItemDTO {
     @NotNull
     private Priority priority;
 
-    private boolean isDone;
+    @NotNull
+    private Boolean isDone;
 
     @NotNull
     private Date created;
@@ -25,7 +26,7 @@ public class CreateTodoItemDTO {
         return priority;
     }
 
-    public boolean isDone() {
+    public Boolean getIsDone() {
         return isDone;
     }
 
@@ -38,4 +39,6 @@ public class CreateTodoItemDTO {
         return "CreateTodoItemDTO [title=" + title + ", priority=" + priority + ", isDone=" + isDone + ", created="
                 + created + "]";
     }
+
+    
 }
