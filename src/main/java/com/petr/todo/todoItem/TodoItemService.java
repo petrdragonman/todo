@@ -51,19 +51,20 @@ public class TodoItemService {
             return result;
         }
         TodoItem foundTodoItem = result.get();
-        if(data.getTitle() != null) {
-            foundTodoItem.setTitle(data.getTitle().trim());
-        }
-        if(data.getCreated() != null) {
-            foundTodoItem.setCreated(data.getCreated());
-        }
-        if(data.getPriority() != null) {
-            foundTodoItem.setPriority(data.getPriority());
-        }
-        if(data.getPriority() != null) {
-            foundTodoItem.setIsDone(data.getIsDone());
-        }
+        // if(data.getTitle() != null) {
+        //     foundTodoItem.setTitle(data.getTitle().trim());
+        // }
+        // if(data.getCreated() != null) {
+        //     foundTodoItem.setCreated(data.getCreated());
+        // }
+        // if(data.getPriority() != null) {
+        //     foundTodoItem.setPriority(data.getPriority());
+        // }
+        // if(data.getPriority() != null) {
+        //     foundTodoItem.setIsDone(data.getIsDone());
+        // }
 
+        mapper.map(data, foundTodoItem);
         this.repo.save(foundTodoItem);
         return Optional.of(foundTodoItem);
     }
