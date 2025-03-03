@@ -1,29 +1,22 @@
 package com.petr.todo.todoItem;
-
 import java.sql.Date;
+import com.petr.todo.config.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "todos")
-public class TodoItem {
+public class TodoItem extends BaseEntity {
 
     public enum Priority {
         HIGH,
         MEDIUM, 
         LOW
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column
     private String title;
@@ -61,23 +54,17 @@ public class TodoItem {
         this.created = created;
     }
 
-
-
     public void setPriority(Priority priority) {
         this.priority = priority;
     }
-
 
     public Boolean getIsDone() {
         return isDone;
     }
 
-
     public void setIsDone(Boolean isDone) {
         this.isDone = isDone;
     }
-
-
 
     public Date getCreated() {
         return created;
@@ -86,12 +73,6 @@ public class TodoItem {
     public void setCreated(Date created) {
         this.created = created;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-
 }
 
 // @Column(nullable = true);
