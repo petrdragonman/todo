@@ -54,16 +54,23 @@ public class TodoItem {
         return priority;
     }
 
+    public TodoItem(String title, Priority priority, Boolean isDone, Date created) {
+        this.title = title;
+        this.priority = priority;
+        this.isDone = isDone;
+        this.created = created;
+    }
+
+
+
     public void setPriority(Priority priority) {
         this.priority = priority;
     }
 
-    
 
     public Boolean getIsDone() {
         return isDone;
     }
-
 
 
     public void setIsDone(Boolean isDone) {

@@ -26,7 +26,8 @@
 
 ## Design Goals / Approach
 
-- I chose to use ModelMapper in this project, mostly from learning perspective. I know that this is a small project to use a full benefit for ModelMapper.
+- I chose to use ModelMapper in this project, mostly from learning perspective. I know that this is a small project to use a full benefit for ModelMapper. Despite it took a more time to set up, I do like using it.
+- I chose to use JavaFaker for data seeding
 
 ---
 
