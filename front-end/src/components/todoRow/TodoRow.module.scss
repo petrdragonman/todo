@@ -1,0 +1,21 @@
+.row {
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //align-items: center;
+  width: 60%;
+  //border: 1px solid blue;
+  //gap: 20px;
+}
+
+.cell {
+  display: flex;
+  justify-content: flex-start;
+}
+.group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  //border: 1px solid blue;
+}
