@@ -1,6 +1,7 @@
 package com.petr.todo.todoItem;
 import java.sql.Date;
-import com.petr.todo.config.BaseEntity;
+
+import com.petr.todo.common.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

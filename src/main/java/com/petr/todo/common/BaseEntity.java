@@ -1,4 +1,4 @@
-package com.petr.todo.config;
+package com.petr.todo.common;
 
 import java.util.Date;
 

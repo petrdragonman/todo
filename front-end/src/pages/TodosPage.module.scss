@@ -1,3 +1,9 @@
+.title {
+  display: flex;
+  align-self: center;
+  padding-bottom: 50px;
+}
+
 .container {
   //   margin: 0;
   //   display: flex;
@@ -8,7 +14,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   gap: 6px;
   //border: 1px solid red;
+}
+
+.forms {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 10px;
+}
+
+.listContainer {
+  //padding-top: 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4em;
 }

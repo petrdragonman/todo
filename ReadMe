@@ -1,4 +1,4 @@
-# Title {Replace with the project title}
+# Todo App
 
 {add test badges here, all projects you build from here on out will have tests, therefore you should have github workflow badges at the top of your repositories: [Github Workflow Badges](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)}
 
@@ -11,7 +11,19 @@
 
 ## Requirements / Purpose
 
-- MVP
+- MVP - front-end
+- Must be able to add categories
+- Must be able to add new tasks tagged with a task category
+- Must be able to update tasks automatically by changing the task name and the category / edit button is fine
+- Must be able to duplicate tasks
+- Must be able to delete tasks (remember this is soft delete, in the backend it will be isArchived)
+- You must add your own styling
+
+- MVP - back-end
+- Deleting a task should set an isArchived flag in the database instead of deleting the task from the database
+- Add a filter to the frontend application that allows you to filter tasks by category
+- Categories and Todos should be stored in separate tables
+
 - purpose of project
 - stack used and why
 
@@ -72,7 +84,7 @@
 
 ## Licensing Details
 
-- What type of license are you releasing this under?
+- Public, free
 
 ---
 
