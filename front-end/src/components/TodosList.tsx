@@ -1,4 +1,4 @@
-import { Todo } from "../services/book-service";
+import { Todo } from "../services/todos-service";
 import TodoRow from "./todoRow/TodoRow";
 
 interface TodosListProps {

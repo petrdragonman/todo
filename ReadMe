@@ -41,6 +41,9 @@
 - I chose to use ModelMapper in this project, mostly from learning perspective. I know that this is a small project to use a full benefit for ModelMapper. Despite it took a more time to set up, I do like using it.
 - I chose to use JavaFaker for data seeding
 - I am using Abstract class as a BaseEntity class holding ID, createdAt and updatedAt, which is then inherited by the child
+-
+- I chose to use React-Hook-Form
+- I chose to use schema based validation - zod
 
 ---
 

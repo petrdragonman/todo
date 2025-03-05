@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllTodos, Todo } from "../services/book-service";
+import { getAllTodos, Todo } from "../services/todos-service";
 import TodosList from "../components/TodosList";
 import classes from "../pages/TodosPage.module.scss";
 import TodoForm from "../components/TodoForm/TodoForm";

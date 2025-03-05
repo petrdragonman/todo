@@ -1,4 +1,4 @@
-import { Todo } from "../../services/book-service";
+import { Todo } from "../../services/todos-service";
 import Button from "../Button/Button";
 import classes from "../todoRow/TodoRow.module.scss";
 
