@@ -5,7 +5,6 @@ import "./index.css";
 function App() {
   return (
     <BrowserRouter>
-      <h2>My Todo App</h2>
       <Routes>
         <Route path="/" element={<TodosPage />} />
       </Routes>
