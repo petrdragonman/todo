@@ -1,12 +1,16 @@
 import { Todo } from "../../services/todos-service";
-import Button from "../Button/Button";
 import classes from "../todoRow/TodoRow.module.scss";
 
 interface TodoRowProps {
   todo: Todo;
+  onDelete: (id: number) => void;
 }
 
-const TodoRow = ({ todo }: TodoRowProps) => {
+const TodoRow = ({ todo, onDelete }: TodoRowProps) => {
+  const handleClick = () => {
+    onDelete(todo.id);
+  };
+
   return (
     <div className={classes.row}>
       <section className={classes.group_todo}>
@@ -26,7 +30,7 @@ const TodoRow = ({ todo }: TodoRowProps) => {
         {/* <span className={classes.cell}>{todo.created}</span> */}
         {/* <Button variant={"PRIMARY"}>Duplicate</Button> */}
         <img src="duplicate.svg" alt="duplicate icon" width={20} />
-        <img src="bin.svg" alt="trash bin" width={16} />
+        <img src="bin.svg" alt="trash bin" width={16} onClick={handleClick} />
       </section>
     </div>
   );

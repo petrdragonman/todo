@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllTodos, Todo } from "../services/todos-service";
+import { deleteTodoById, getAllTodos, Todo } from "../services/todos-service";
 import TodosList from "../components/TodosList";
 import classes from "../pages/TodosPage.module.scss";
 import TodoForm from "../components/TodoForm/TodoForm";
@@ -16,6 +16,11 @@ const TodosPage = () => {
     console.log("Form submitted", data);
   };
 
+  const handleDelete = async (id: number) => {
+    await deleteTodoById(id);
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Todos App</h2>
@@ -25,7 +30,7 @@ const TodosPage = () => {
       </section>
       <section className={classes.forms}></section>
       <section className={classes.listContainer}>
-        <TodosList todos={todos} />
+        <TodosList todos={todos} onDelete={handleDelete} />
       </section>
       {/* <TodosList todos={todos} /> */}
     </div>
