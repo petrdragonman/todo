@@ -14,6 +14,7 @@ import com.petr.todo.common.exceptions.NotFoundException;
 
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,6 +62,7 @@ public class TodoItemController {
 
     
     @DeleteMapping("/{id}")
+    //@CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) throws NotFoundException {
         boolean wasDeleted = this.todoItemService.deleteById(id);
         if (!wasDeleted) {
