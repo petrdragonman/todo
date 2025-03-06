@@ -9,11 +9,11 @@ public class UpdateTodoItemDTO {
     @Pattern(regexp = ".*\\S.*", message = "Title can not be empty")
     private String title;
     
-    private Priority priority;
+    //private Priority priority;
     
     private Boolean isDone;
 
-    private Date created;
+    //private Date created;
 
     public String getTitle() {
         return title;
@@ -23,23 +23,21 @@ public class UpdateTodoItemDTO {
         this.title = title;
     }
 
-    public Priority getPriority() {
-        return priority;
-    }
+    // public Priority getPriority() {
+    //     return priority;
+    // }
 
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
+    // public void setPriority(Priority priority) {
+    //     this.priority = priority;
+    // }
 
-    
+    // public Date getCreated() {
+    //     return created;
+    // }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
+    // public void setCreated(Date created) {
+    //     this.created = created;
+    // }
 
     public Boolean getIsDone() {
         return isDone;

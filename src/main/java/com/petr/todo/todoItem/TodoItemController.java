@@ -9,13 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.petr.todo.common.exceptions.NotFoundException;
-
 import jakarta.validation.Valid;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -27,9 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@CrossOrigin(origins = "http://localhost:5173") // Allow requests from this origin
 @RequestMapping("/todos")
 public class TodoItemController {
-
-    private TodoItemService todoItemService;
     
+    private TodoItemService todoItemService;
     TodoItemController(TodoItemService todoItemService) {
         this.todoItemService = todoItemService;
     }
@@ -60,7 +54,6 @@ public class TodoItemController {
         return new ResponseEntity<TodoItem>(updatedTodoItem, HttpStatus.OK);
     }
 
-    
     @DeleteMapping("/{id}")
     //@CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) throws NotFoundException {

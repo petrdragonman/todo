@@ -1,12 +1,11 @@
 package com.petr.todo.todoItem;
-import java.sql.Date;
-
+import com.petr.todo.category.Category;
 import com.petr.todo.common.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,19 +21,24 @@ public class TodoItem extends BaseEntity {
     @Column
     private String title;
 
-    @Enumerated(EnumType.STRING)
-    private Priority priority;
-
-    @Column
-    private Boolean isDone;
-
-    @Column
-    private Date created;
-
-    public TodoItem() {
-    }
-
+    @ManyToOne
+    @JoinColumn(name = "category_id") // Foreign key in the Categories table
+    private Category category;
     
+    // @Enumerated(EnumType.STRING)
+    // private Priority priority;
+
+    @Column
+    private Boolean isDone = false;
+
+
+
+    // @Column
+    // private Date created;
+
+    public TodoItem(String title, Category category, Boolean isDone) {}
+
+    public TodoItem() {}
 
     public String getTitle() {
         return title;
@@ -44,20 +48,13 @@ public class TodoItem extends BaseEntity {
         this.title = title;
     }
 
-    public Priority getPriority() {
-        return priority;
-    }
+    // public Priority getPriority() {
+    //     return priority;
+    // }
 
-    public TodoItem(String title, Priority priority, Boolean isDone, Date created) {
-        this.title = title;
-        this.priority = priority;
-        this.isDone = isDone;
-        this.created = created;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
+    // public void setPriority(Priority priority) {
+    //     this.priority = priority;
+    // }
 
     public Boolean getIsDone() {
         return isDone;
@@ -67,13 +64,20 @@ public class TodoItem extends BaseEntity {
         this.isDone = isDone;
     }
 
-    public Date getCreated() {
-        return created;
+    @Override
+    public String toString() {
+        return "TodoItem [title=" + title + ", isDone=" + isDone + "]";
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
+    // public Date getCreated() {
+    //     return created;
+    // }
+
+    // public void setCreated(Date created) {
+    //     this.created = created;
+    // }
+
+    
 }
 
 // @Column(nullable = true);
