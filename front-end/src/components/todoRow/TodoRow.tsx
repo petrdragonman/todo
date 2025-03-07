@@ -4,21 +4,25 @@ import classes from "../todoRow/TodoRow.module.scss";
 interface TodoRowProps {
   todo: Todo;
   onDelete: (id: number) => void;
+  onChange: (id: number, isDone: boolean) => void;
 }
 
-const TodoRow = ({ todo, onDelete }: TodoRowProps) => {
+const TodoRow = ({ todo, onDelete, onChange }: TodoRowProps) => {
   const handleClick = () => {
     onDelete(todo.id);
+  };
+  const handleOnChange = () => {
+    onChange(todo.id, !todo.isDone);
   };
 
   return (
     <div className={classes.row}>
       <section className={classes.group_todo}>
-        <span>
+        <span onClick={handleOnChange}>
           {todo.isDone ? (
-            <img src="./box.svg" alt="check box - unchecked" width={14} />
-          ) : (
             <img src="checked.svg" alt="check box - checked" width={14} />
+          ) : (
+            <img src="box.svg" alt="check box - unchecked" width={14} />
           )}
         </span>
         <span className={classes.title}>{todo.title}</span>

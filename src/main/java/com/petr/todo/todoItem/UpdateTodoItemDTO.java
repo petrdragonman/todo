@@ -1,8 +1,4 @@
 package com.petr.todo.todoItem;
-
-import java.sql.Date;
-
-import com.petr.todo.todoItem.TodoItem.Priority;
 import jakarta.validation.constraints.Pattern;
 
 public class UpdateTodoItemDTO {

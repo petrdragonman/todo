@@ -27,10 +27,10 @@ const TodoForm = ({ onSubmit }: TodoFormProps) => {
           type="text"
           id="todoInput"
           placeholder="type new todo..."
-          {...register("todo")}
+          {...register("title")}
         />
-        {errors?.todo && (
-          <small className={classes.error_text}>{errors?.todo?.message}</small>
+        {errors?.title && (
+          <small className={classes.error_text}>{errors?.title?.message}</small>
         )}
       </div>
       <div className={classes.field}>

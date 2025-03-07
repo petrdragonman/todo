@@ -1,24 +1,18 @@
 package com.petr.todo.category;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import com.petr.todo.todoItem.TodoItem;
-
-import jakarta.validation.Valid;
 
 @Service
 public class CategoryService {
 
     private CategoryRepository repo;
-    private ModelMapper modelMapper;
+    private ModelMapper mapper;
 
-    private CategoryService(CategoryRepository repo, ModelMapper modelMapper) {
+    private CategoryService(CategoryRepository repo, ModelMapper mapper) {
         this.repo = repo;
-        this.modelMapper = modelMapper;
+        this.mapper = mapper;
     }
 
     public List<Category> getAll() {
@@ -26,7 +20,7 @@ public class CategoryService {
     }
 
     public Category createCategory(CreateCategoryDTO data) {
-        Category newCategory = modelMapper.map(data, Category.class);
+        Category newCategory = mapper.map(data, Category.class);
         return this.repo.save(newCategory);
     }
 
@@ -40,7 +34,7 @@ public class CategoryService {
         return result;
        }
        Category foundCategory = result.get();
-       this.modelMapper.map(foundCategory, Category.class);
+       this.mapper.map(foundCategory, Category.class);
        this.repo.save(foundCategory);
        return Optional.of(foundCategory);
     }

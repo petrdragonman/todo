@@ -22,8 +22,6 @@ public class Category extends BaseEntity {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TodoItem> todos = new ArrayList<>();
 
-    
-
     public Category(String title) {
         this.title = title;
     }

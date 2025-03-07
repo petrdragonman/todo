@@ -1,9 +1,6 @@
 package com.petr.todo.category;
-
 import java.util.List;
-
 import com.petr.todo.todoItem.TodoItem;
-
 import jakarta.validation.constraints.Pattern;
 
 public class UpdateCategoryDTO {
