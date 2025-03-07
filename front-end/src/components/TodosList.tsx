@@ -5,12 +5,13 @@ import TodoRow from "./todoRow/TodoRow";
 interface TodosListProps {
   todos: Todo[];
   onDelete: (id: number) => void; // onDelete
+  onChange: (id: number, isDone: boolean) => void;
 }
 
-const TodosList = ({ todos, onDelete }: TodosListProps) => {
+const TodosList = ({ todos, onDelete, onChange }: TodosListProps) => {
   // onDelete
   //const [items, setItems] = useState<Todo[]>(todos);
-  console.log("todos: ", todos.length);
+  // console.log("todos: ", todos.length);
   if (todos.length === 0) {
     return null;
   }
@@ -29,7 +30,12 @@ const TodosList = ({ todos, onDelete }: TodosListProps) => {
   return (
     <>
       {todos.map((todo) => (
-        <TodoRow key={todo.id} todo={todo} onDelete={onDelete} />
+        <TodoRow
+          key={todo.id}
+          todo={todo}
+          onDelete={onDelete}
+          onChange={onChange}
+        />
       ))}
     </>
   );
