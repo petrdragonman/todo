@@ -15,6 +15,7 @@ import {
   createCategory,
   getAllCategories,
 } from "../services/categories-service";
+import CategoryList from "../components/CategoryList";
 
 const TodosPage = () => {
   const [isDone, setIsDone] = useState(false);
@@ -33,7 +34,6 @@ const TodosPage = () => {
   }, []);
 
   const onFormSubmit = async (data: any) => {
-    //console.log("Form submitted", data);
     const newCategory = await createCategory(data);
     setCategories((prevCategories) => [...prevCategories, newCategory]);
   };
@@ -42,12 +42,6 @@ const TodosPage = () => {
     const newTodo = await createTodo(data);
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
-
-  // const onToduUpdateFormSubmit = async (data: Todo) => {
-  //   const id = 4;
-  //   const result = await updateTodo(id, data);
-  //   console.log(result);
-  // };
 
   const handleDelete = async (id: number) => {
     await deleteTodoById(id);
@@ -68,6 +62,12 @@ const TodosPage = () => {
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Todos App</h2>
+      <section className={classes.categories_container}>
+        <p className={classes.categories_container__title}>Categories</p>
+        <article className={classes.categories_container__items}>
+          <CategoryList categories={categories} />
+        </article>
+      </section>
       <section className={classes.forms}>
         <CategoryForm onSubmit={onFormSubmit} />
       </section>
