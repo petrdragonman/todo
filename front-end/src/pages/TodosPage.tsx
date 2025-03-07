@@ -50,12 +50,19 @@ const TodosPage = () => {
 
   const handleIsDone = async (id: number, isDone: boolean) => {
     const todo = todos.find((todo) => todo.id === id);
-    console.log(todo);
     if (todo) {
       const updatedTodo = await updateTodo(id, { ...todo, isDone });
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
       );
+    }
+  };
+
+  const handleDuplicate = async (id: number) => {
+    const todo = todos.find((todo) => todo.id === id);
+    if (todo) {
+      const newTodo = await createTodo(todo);
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
     }
   };
 
@@ -80,6 +87,7 @@ const TodosPage = () => {
           todos={todos}
           onDelete={handleDelete}
           onChange={handleIsDone}
+          onDuplicate={handleDuplicate}
         />
       </section>
     </div>

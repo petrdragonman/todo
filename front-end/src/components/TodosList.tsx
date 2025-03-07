@@ -1,32 +1,23 @@
-import { useEffect, useState } from "react";
-import { deleteTodoById, Todo } from "../services/todos-service";
+import { Todo } from "../services/todos-service";
 import TodoRow from "./todoRow/TodoRow";
 
 interface TodosListProps {
   todos: Todo[];
   onDelete: (id: number) => void; // onDelete
   onChange: (id: number, isDone: boolean) => void;
+  onDuplicate: (id: number) => void;
 }
 
-const TodosList = ({ todos, onDelete, onChange }: TodosListProps) => {
-  // onDelete
-  //const [items, setItems] = useState<Todo[]>(todos);
-  // console.log("todos: ", todos.length);
+const TodosList = ({
+  todos,
+  onDelete,
+  onChange,
+  onDuplicate,
+}: TodosListProps) => {
   if (todos.length === 0) {
     return null;
   }
 
-  // useEffect(() => {
-  //   setItems(todos);
-  // }, [todos]);
-
-  // const handleDelete = async (id: number) => {
-  //   await deleteTodoById(id);
-  //   setItems(items.filter((item) => item.id !== id));
-  // };
-
-  //todos = items;
-  // todos -> items
   return (
     <>
       {todos.map((todo) => (
@@ -35,6 +26,7 @@ const TodosList = ({ todos, onDelete, onChange }: TodosListProps) => {
           todo={todo}
           onDelete={onDelete}
           onChange={onChange}
+          onClick={onDuplicate}
         />
       ))}
     </>
