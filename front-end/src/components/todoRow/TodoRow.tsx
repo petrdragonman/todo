@@ -5,14 +5,19 @@ interface TodoRowProps {
   todo: Todo;
   onDelete: (id: number) => void;
   onChange: (id: number, isDone: boolean) => void;
+  onClick: (id: number) => void;
 }
 
-const TodoRow = ({ todo, onDelete, onChange }: TodoRowProps) => {
+const TodoRow = ({ todo, onDelete, onChange, onClick }: TodoRowProps) => {
   const handleClick = () => {
     onDelete(todo.id);
   };
   const handleOnChange = () => {
     onChange(todo.id, !todo.isDone);
+  };
+
+  const handleOnClick = () => {
+    onClick(todo.id);
   };
 
   return (
@@ -33,7 +38,12 @@ const TodoRow = ({ todo, onDelete, onChange }: TodoRowProps) => {
       <section className={classes.group_icons}>
         {/* <span className={classes.cell}>{todo.created}</span> */}
         {/* <Button variant={"PRIMARY"}>Duplicate</Button> */}
-        <img src="duplicate.svg" alt="duplicate icon" width={20} />
+        <img
+          src="duplicate.svg"
+          alt="duplicate icon"
+          width={20}
+          onClick={handleOnClick}
+        />
         <img src="bin.svg" alt="trash bin" width={16} onClick={handleClick} />
       </section>
     </div>
