@@ -4,6 +4,8 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.petr.todo.todoItem.TodoItem;
+
 @Service
 public class CategoryService {
 
@@ -28,6 +30,10 @@ public class CategoryService {
         return this.repo.findById(id);
     }
 
+    public Optional<Category> getByTitle(String categoryTitle) {
+        return this.repo.findByTitle(categoryTitle);
+    }
+
     public Optional<Category> updateById(Long id, UpdateCategoryDTO data) {
        Optional<Category> result = repo.findById(id);
        if(result.isEmpty()) {
@@ -47,4 +53,6 @@ public class CategoryService {
         this.repo.delete(result.get());
         return true;
     }
+
+    
 }

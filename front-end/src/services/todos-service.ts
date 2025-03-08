@@ -7,9 +7,9 @@ export interface Todo {
   createdAt: string;
   updatedAt: string;
   title: string;
-  priority: Priority;
+  //priority: Priority;
   isDone: boolean;
-  created: string;
+  //created: string;
 }
 
 export const getAllTodos = async () => {
