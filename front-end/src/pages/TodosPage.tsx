@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   createTodo,
   deleteTodoById,
+  duplicateTodo,
   getAllTodos,
   Todo,
   updateTodo,
@@ -61,7 +62,7 @@ const TodosPage = () => {
   const handleDuplicate = async (id: number) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
-      const newTodo = await createTodo(todo);
+      const newTodo = await duplicateTodo(todo);
       setTodos((prevTodos) => [...prevTodos, newTodo]);
     }
   };
