@@ -79,7 +79,7 @@ const TodosPage = () => {
         <CategoryForm onSubmit={onFormSubmit} />
       </section>
       <section className={classes.forms}>
-        <TodoForm onSubmit={onTodoFormSubmit} />
+        <TodoForm onSubmit={onTodoFormSubmit} categories={categories} />
       </section>
       <section className={classes.forms}></section>
       <section className={classes.listContainer}>

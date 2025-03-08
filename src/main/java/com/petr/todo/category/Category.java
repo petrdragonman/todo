@@ -3,6 +3,7 @@ package com.petr.todo.category;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.petr.todo.common.BaseEntity;
 import com.petr.todo.todoItem.TodoItem;
 
@@ -20,6 +21,7 @@ public class Category extends BaseEntity {
     private String title;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"category", "todos"})
     private List<TodoItem> todos = new ArrayList<>();
 
     public Category(String title) {

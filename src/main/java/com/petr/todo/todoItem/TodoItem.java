@@ -1,4 +1,5 @@
 package com.petr.todo.todoItem;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.petr.todo.category.Category;
 import com.petr.todo.common.BaseEntity;
 
@@ -12,17 +13,18 @@ import jakarta.persistence.Table;
 @Table(name = "todos")
 public class TodoItem extends BaseEntity {
 
-    public enum Priority {
-        HIGH,
-        MEDIUM, 
-        LOW
-    }
+    // public enum Priority {
+    //     HIGH,
+    //     MEDIUM, 
+    //     LOW
+    // }
 
     @Column
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "category_id") // Foreign key in the Categories table
+    @JoinColumn(name = "category_title", nullable = false) // Foreign key in the Categories table
+    @JsonIgnoreProperties({"category", "todos"})
     private Category category;
     
     // @Enumerated(EnumType.STRING)
@@ -30,11 +32,6 @@ public class TodoItem extends BaseEntity {
 
     @Column
     private Boolean isDone = false;
-
-
-
-    // @Column
-    // private Date created;
 
     public TodoItem(String title, Category category, Boolean isDone) {}
 
@@ -69,15 +66,12 @@ public class TodoItem extends BaseEntity {
         return "TodoItem [title=" + title + ", isDone=" + isDone + "]";
     }
 
-    // public Date getCreated() {
-    //     return created;
-    // }
+    public Category getCategory() {
+        return category;
+    }
 
-    // public void setCreated(Date created) {
-    //     this.created = created;
-    // }
-
+    public void setCategory(Category category) {
+        this.category = category;
+    }
     
 }
-
-// @Column(nullable = true);

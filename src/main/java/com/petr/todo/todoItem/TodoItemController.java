@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.petr.todo.common.exceptions.NotFoundException;
+import com.petr.todo.common.exceptions.ServiceValidationException;
+
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,8 @@ public class TodoItemController {
     }
 
     @PostMapping
-    public ResponseEntity<TodoItem> createTodoItem(@RequestBody @Valid CreateTodoItemDTO data) {
+    public ResponseEntity<TodoItem> createTodoItem(@RequestBody @Valid CreateTodoItemDTO data) throws ServiceValidationException {
+        //TodoItem newTodoItem = this.todoItemService.createTodoItem(data);
         TodoItem newTodoItem = this.todoItemService.createTodoItem(data);
         return new ResponseEntity<TodoItem>(newTodoItem, HttpStatus.CREATED);
     }

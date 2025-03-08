@@ -37,23 +37,20 @@ public class DataSeeder implements CommandLineRunner {
             }
         }
 
-        if(todoRepo.count() == 0) {
-            List<Category> categories = categoryRepo.findAll(); // fetch all categories
-            if(!categories.isEmpty()) {
-                for(int i = 0; i < 10; i++) {
-                    String title = faker.job().keySkills();
-                    Category category = categories.get(faker.number().numberBetween(0, categories.size()));
-                    Boolean isDone = faker.number().numberBetween(1, 100) % 2 == 0;
-                    TodoItem fakeTodoItem = new TodoItem(title, category, isDone);
-                    this.todoRepo.saveAndFlush(fakeTodoItem);
-                }
-            } else {
-                System.out.println("no category found....");
-            }
-            
-        }
-
-        
+        // if(todoRepo.count() == 0) {
+        //     List<Category> categories = categoryRepo.findAll(); // fetch all categories
+        //     if(!categories.isEmpty()) {
+        //         for(int i = 0; i < 10; i++) {
+        //             String title = faker.job().keySkills();
+        //             Category category = categories.get(faker.number().numberBetween(0, categories.size()));
+        //             Boolean isDone = faker.number().numberBetween(1, 100) % 2 == 0;
+        //             TodoItem fakeTodoItem = new TodoItem(title, category, isDone);
+        //             this.todoRepo.saveAndFlush(fakeTodoItem);
+        //         }
+        //     } else {
+        //         System.out.println("no category found....");
+        //     }
+        // }
+ 
     }
-    
 }
