@@ -1,4 +1,5 @@
 import { string } from "zod";
+import { Category } from "./categories-service";
 
 type Priority = "HIGH" | "MEDIUM" | "LOW";
 
@@ -9,6 +10,7 @@ export interface Todo {
   title: string;
   //priority: Priority;
   isDone: boolean;
+  category: Category;
   //created: string;
 }
 
@@ -43,6 +45,27 @@ export const createTodo = async (data: Todo) => {
   const response = await fetch("http://localhost:8080/todos", {
     method: "POST",
     body: JSON.stringify({ ...data, isDone: false }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to post");
+  }
+  return (await response.json()) as Todo;
+};
+
+export const duplicateTodo = async (data: Todo) => {
+  const { category, ...rest } = data;
+  //const updatedData = { ...rest, isDone: false, categoryTitle: category.title };
+  console.log({ ...rest, isDone: false, categoryTitle: category.title });
+  const response = await fetch("http://localhost:8080/todos", {
+    method: "POST",
+    body: JSON.stringify({
+      ...rest,
+      isDone: false,
+      categoryTitle: category.title,
+    }),
     headers: {
       "Content-Type": "application/json",
     },
