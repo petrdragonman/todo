@@ -1,5 +1,5 @@
 .form {
-  //width: 60%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,14 +9,6 @@
 .field {
   display: flex;
   flex-direction: column;
-  padding: 0.24em;
-  gap: 0.4em;
-}
-
-.field_title {
-  display: flex;
-  flex-direction: column;
-  width: 500px;
   padding: 0.24em;
   gap: 0.4em;
 }

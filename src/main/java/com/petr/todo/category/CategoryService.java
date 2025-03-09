@@ -4,8 +4,6 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.petr.todo.todoItem.TodoItem;
-
 @Service
 public class CategoryService {
 
