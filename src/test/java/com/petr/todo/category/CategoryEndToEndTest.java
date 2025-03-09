@@ -79,7 +79,6 @@ public class CategoryEndToEndTest {
             .then()
             .statusCode(HttpStatus.OK.value())
             .body("title", equalTo("School"));
-            //.body(matchesJsonSchemaInClasspath("schemas/book-schema.json"));
 
     }
 }
