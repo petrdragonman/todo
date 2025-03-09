@@ -1,0 +1,97 @@
+# Todo App
+
+{add test badges here, all projects you build from here on out will have tests, therefore you should have github workflow badges at the top of your repositories: [Github Workflow Badges](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)}
+
+## Demo & Snippets
+
+- Include hosted link
+- Include images of app if CLI or Client App
+
+---
+
+## Requirements / Purpose
+
+- MVP - front-end
+- Must be able to add categories
+- Must be able to add new tasks tagged with a task category
+- Must be able to update tasks automatically by changing the task name and the category / edit button is fine
+- Must be able to duplicate tasks
+- Must be able to delete tasks (remember this is soft delete, in the backend it will be isArchived)
+- You must add your own styling
+
+- MVP - back-end
+- Deleting a task should set an isArchived flag in the database instead of deleting the task from the database
+- Add a filter to the frontend application that allows you to filter tasks by category
+- Categories and Todos should be stored in separate tables
+
+- purpose of project
+- stack used and why
+
+---
+
+## Build Steps
+
+- how to build / run project
+- use proper code snippets if there are any commands to run
+
+---
+
+## Design Goals / Approach
+
+- I chose to use ModelMapper in this project, mostly from learning perspective. I know that this is a small project to use a full benefit for ModelMapper. Despite it took a more time to set up, I do like using it.
+- I chose to use JavaFaker for data seeding
+- I am using Abstract class as a BaseEntity class holding ID, createdAt and updatedAt, which is then inherited by the child
+-
+- I chose to use React-Hook-Form
+- I chose to use schema based validation - zod
+
+---
+
+## Features
+
+- What features does the project have?
+- list them...
+
+---
+
+## Known issues
+
+- Remaining bugs, things that have been left unfixed
+- Features that are buggy / flimsy
+
+---
+
+## Future Goals
+
+- What are the immediate features you'd add given more time
+
+---
+
+## Change logs
+
+- Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
+
+### 13/02/2022 - {Theme of changes if applicable}
+
+- Extended the expiry time of JWT tokens on the backend
+- Added users to cohort response payload
+- Centralized API base URL on frontend using the proxy `package.json` property
+
+---
+
+## What did you struggle with?
+
+- What? Why? How?
+
+---
+
+## Licensing Details
+
+- Public, free
+
+---
+
+## Further details, related projects, reimplementations
+
+- Is this project a reimplementation for something you've done in the past? if so explain it and link it here.
+- If it's an API, is there a client app that works with this project? link it

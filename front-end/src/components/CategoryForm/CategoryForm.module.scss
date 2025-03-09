@@ -1,0 +1,19 @@
+.form {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  padding: 0.24em;
+  gap: 0.4em;
+}
+
+.error_text {
+  font-size: smaller;
+  color: #fb7431;
+}

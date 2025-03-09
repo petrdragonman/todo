@@ -1,0 +1,48 @@
+.row {
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //align-items: center;
+  width: 100%;
+  //border: 1px solid blue;
+  //gap: 20px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  width: 300px;
+  //border: 1px solid red;
+}
+
+.group_todo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  //border: 1px solid blue;
+}
+.group_priority {
+  display: flex;
+  align-self: center;
+  gap: 10px;
+  //border: 1px solid blue;
+}
+.group_icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  //border: 1px solid blue;
+}
+
+.category {
+  display: flex;
+  border: 0.8px solid #fb7431;
+  border-radius: 5px;
+  padding: 2px 6px;
+}
