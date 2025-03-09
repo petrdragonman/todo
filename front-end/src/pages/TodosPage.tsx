@@ -35,13 +35,13 @@ const TodosPage = () => {
   }, []);
 
   const onFormSubmit = async (data: any) => {
-    console.log(data);
+    //console.log(data);
     const newCategory = await createCategory(data);
     setCategories((prevCategories) => [...prevCategories, newCategory]);
   };
 
   const onTodoFormSubmit = async (data: any) => {
-    console.log(data);
+    //console.log(data);
     const newTodo = await createTodo(data);
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
