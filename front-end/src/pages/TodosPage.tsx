@@ -19,7 +19,7 @@ import {
 import CategoryList from "../components/CategoryList";
 
 const TodosPage = () => {
-  const [isDone, setIsDone] = useState(false);
+  //const [isDone, setIsDone] = useState(false);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   useEffect(() => {
@@ -35,11 +35,13 @@ const TodosPage = () => {
   }, []);
 
   const onFormSubmit = async (data: any) => {
+    console.log(data);
     const newCategory = await createCategory(data);
     setCategories((prevCategories) => [...prevCategories, newCategory]);
   };
 
   const onTodoFormSubmit = async (data: any) => {
+    console.log(data);
     const newTodo = await createTodo(data);
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
@@ -67,29 +69,60 @@ const TodosPage = () => {
     }
   };
 
+  const onFormSubmitTodoUpdate = async (data: any, id?: number) => {
+    console.log("Form Data:", data); // Debugging
+    const todo = todos.find((todo) => todo.id === id);
+    console.log("Found Todo:", todo); // Debugging
+
+    if (todo) {
+      const categoryId = todo.category.id;
+      const category = categories.find((cat) => cat.id == categoryId);
+      if (category) {
+        const test = { ...todo, title: data.title, category: category };
+        console.log(test);
+        const updatedTodo = await updateTodo(todo.id, {
+          ...todo, // Spread the existing todo properties
+          title: data.title, // Update the title
+          category: category,
+        });
+        setTodos((prevTodos) =>
+          prevTodos.map((todo) =>
+            todo.id === updatedTodo.id ? updatedTodo : todo
+          )
+        );
+      }
+    }
+  };
+
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Todos App</h2>
       <section className={classes.categories_container}>
-        <p className={classes.categories_container__title}>Categories</p>
+        <p className={classes.categories_container__title}>CATEGORIES</p>
         <article className={classes.categories_container__items}>
           <CategoryList categories={categories} />
         </article>
+        <section className={classes.forms}>
+          <CategoryForm onSubmit={onFormSubmit} />
+        </section>
       </section>
-      <section className={classes.forms}>
-        <CategoryForm onSubmit={onFormSubmit} />
-      </section>
-      <section className={classes.forms}>
-        <TodoForm onSubmit={onTodoFormSubmit} categories={categories} />
-      </section>
-      <section className={classes.forms}></section>
-      <section className={classes.listContainer}>
-        <TodosList
-          todos={todos}
-          onDelete={handleDelete}
-          onChange={handleIsDone}
-          onDuplicate={handleDuplicate}
-        />
+
+      <section className={classes.todos_container}>
+        <p className={classes.categories_container__title}>TODOS</p>
+        <section className={classes.forms}>
+          <TodoForm onSubmit={onTodoFormSubmit} categories={categories} />
+        </section>
+        <section className={classes.listContainer}>
+          <TodosList
+            todos={todos}
+            onDelete={handleDelete}
+            onChange={handleIsDone}
+            onDuplicate={handleDuplicate}
+            //onTodo={handleTodo}
+            onSubmit={onFormSubmitTodoUpdate}
+            categories={categories}
+          />
+        </section>
       </section>
     </div>
   );

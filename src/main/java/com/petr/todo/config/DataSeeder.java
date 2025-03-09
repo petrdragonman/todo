@@ -30,7 +30,7 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if(categoryRepo.count() == 0) {
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < 2; i++) {
                 String title = faker.job().field();
                 Category fakeCategory = new Category(title);
                 this.categoryRepo.saveAndFlush(fakeCategory);

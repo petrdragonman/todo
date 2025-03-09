@@ -1,7 +1,7 @@
 import { string } from "zod";
 import { Category } from "./categories-service";
 
-type Priority = "HIGH" | "MEDIUM" | "LOW";
+//type Priority = "HIGH" | "MEDIUM" | "LOW";
 
 export interface Todo {
   id: number;
@@ -25,8 +25,8 @@ export const getAllTodos = async () => {
 // export const deleteTodoById = async (id: number): Promise<void> => {
 export const deleteTodoById = async (id: number) => {
   try {
-    console.log(`this is id: ${id}`);
-    console.log("this is id: ", id);
+    //console.log(`this is id: ${id}`);
+    //console.log("this is id: ", id);
     const response = await fetch("http://localhost:8080/todos/" + id, {
       method: "DELETE",
     });
@@ -40,7 +40,7 @@ export const deleteTodoById = async (id: number) => {
 };
 
 export const createTodo = async (data: Todo) => {
-  console.log({ ...data, isDone: false });
+  //console.log({ ...data, isDone: false });
 
   const response = await fetch("http://localhost:8080/todos", {
     method: "POST",
@@ -58,7 +58,7 @@ export const createTodo = async (data: Todo) => {
 export const duplicateTodo = async (data: Todo) => {
   const { category, ...rest } = data;
   //const updatedData = { ...rest, isDone: false, categoryTitle: category.title };
-  console.log({ ...rest, isDone: false, categoryTitle: category.title });
+  //console.log({ ...rest, isDone: false, categoryTitle: category.title });
   const response = await fetch("http://localhost:8080/todos", {
     method: "POST",
     body: JSON.stringify({
@@ -77,6 +77,7 @@ export const duplicateTodo = async (data: Todo) => {
 };
 
 export const updateTodo = async (id: number, data: Todo) => {
+  console.log("passed object to update: ", data);
   const response = await fetch("http://localhost:8080/todos/" + id, {
     method: "PATCH",
     body: JSON.stringify(data),

@@ -1,40 +1,39 @@
-import Button from "../Button/Button";
-import classes from "./TodoForm.module.scss";
 import { useForm } from "react-hook-form";
+import classes from "./TodoEditForm.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema, TodoFormData } from "./schema";
+import { schema, TodoEditFormData } from "./schema";
+import { Category } from "../../services/categories-service";
+import { Todo } from "../../services/todos-service";
+import Button from "../Button/Button";
 
-interface TodoFormProps {
-  //onSubmit: (...args: any[]) => any;
-  onSubmit: (data: TodoFormData, id?: number) => unknown;
-  //categories: Category[];
-  categories: { id: number; title: string }[];
-  existingData?: TodoFormData & { id?: number };
+interface TodoEditFormProps {
+  onSubmit: (data: TodoEditFormData) => unknown;
+  todo: Todo;
+  categories: Category[];
+  todoId: number;
 }
-const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
+const TodoForm = ({
+  onSubmit,
+  todo,
+  categories,
+  todoId,
+}: TodoEditFormProps) => {
   const {
     handleSubmit,
     register,
     reset,
     formState: { isSubmitSuccessful, errors },
-  } = useForm<TodoFormData>({
-    resolver: zodResolver(schema),
-    defaultValues: existingData || {},
-  }); // TodoFormData
+  } = useForm<TodoEditFormData>({ resolver: zodResolver(schema) }); // TodoFormData
 
-  isSubmitSuccessful && reset();
-
-  //console.log("Default values :", existingData);
-  const handleFormSubmit = (data: TodoFormData) => {
-    onSubmit(data, existingData?.id);
-  };
+  //isSubmitSuccessful && reset();
 
   return (
-    <form className={classes.form} onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className={classes.field_title}>
+    <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={classes.field}>
         <input
           type="text"
           id="todoInput"
+          value={todo.title}
           placeholder="type new todo..."
           {...register("title")}
         />
@@ -46,7 +45,7 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         <select id="categoryInput" {...register("categoryTitle")}>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.title}>
-              {cat.title}
+              {todo.category.title}
             </option>
           ))}
         </select>
@@ -57,8 +56,18 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         )}
       </div>
       <div className={classes.field}>
+        {/* <button type="submit">
+          <img
+            src="duplicate.svg"
+            alt="duplicate icon"
+            width={20}
+            //onClick={handleOnClick}
+            //type="submit"
+          />
+        </button> */}
+
         <Button variant="PRIMARY" type="submit">
-          {existingData ? "Update" : "Create"}
+          Create
         </Button>
       </div>
     </form>
