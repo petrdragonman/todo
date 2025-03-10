@@ -40,7 +40,7 @@ export const deleteTodoById = async (id: number) => {
 };
 
 export const createTodo = async (data: Todo) => {
-  //console.log({ ...data, isDone: false });
+  console.log("passed data to create: ", { ...data, isDone: false });
 
   const response = await fetch("http://localhost:8080/todos", {
     method: "POST",
@@ -51,6 +51,20 @@ export const createTodo = async (data: Todo) => {
   });
   if (!response.ok) {
     throw new Error("Failed to post");
+  }
+  return (await response.json()) as Todo;
+};
+export const updateTodo = async (id: number, data: any) => {
+  console.log("passed object to update: ", data);
+  const response = await fetch("http://localhost:8080/todos/" + id, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update");
   }
   return (await response.json()) as Todo;
 };
@@ -72,21 +86,6 @@ export const duplicateTodo = async (data: Todo) => {
   });
   if (!response.ok) {
     throw new Error("Failed to post");
-  }
-  return (await response.json()) as Todo;
-};
-
-export const updateTodo = async (id: number, data: Todo) => {
-  console.log("passed object to update: ", data);
-  const response = await fetch("http://localhost:8080/todos/" + id, {
-    method: "PATCH",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (!response.ok) {
-    throw new Error("Failed to update");
   }
   return (await response.json()) as Todo;
 };

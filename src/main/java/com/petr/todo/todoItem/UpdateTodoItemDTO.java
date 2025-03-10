@@ -9,6 +9,9 @@ public class UpdateTodoItemDTO {
     
     private Boolean isDone;
 
+    //private Long categoryId;
+    private String categoryTitle;
+
     //private Date created;
 
     public String getTitle() {
@@ -19,27 +22,19 @@ public class UpdateTodoItemDTO {
         this.title = title;
     }
 
-    // public Priority getPriority() {
-    //     return priority;
-    // }
-
-    // public void setPriority(Priority priority) {
-    //     this.priority = priority;
-    // }
-
-    // public Date getCreated() {
-    //     return created;
-    // }
-
-    // public void setCreated(Date created) {
-    //     this.created = created;
-    // }
-
     public Boolean getIsDone() {
         return isDone;
     }
 
     public void setIsDone(Boolean isDone) {
         this.isDone = isDone;
+    }
+
+    public String getCategoryTitle() {
+        return categoryTitle;
+    }
+
+    public void setCategoryTitle(String categoryTitle) {
+        this.categoryTitle = categoryTitle;
     }
 }
