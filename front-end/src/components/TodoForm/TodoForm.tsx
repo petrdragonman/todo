@@ -22,7 +22,7 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
     defaultValues: existingData || {},
   }); // TodoFormData
 
-  isSubmitSuccessful && reset();
+  //isSubmitSuccessful && reset();
 
   //console.log("Default values :", existingData);
   const handleFormSubmit = (data: TodoFormData) => {

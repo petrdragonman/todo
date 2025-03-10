@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "title": { "type": "string" },
+    "todos": {
+      "type": ["array", "null"],
+      "items": { "$ref": "todo-schema.json" }
+    }
+  },
+  "required": ["id", "createdAt", "updatedAt", "title", "todos"]
+}
