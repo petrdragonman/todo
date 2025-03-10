@@ -15,7 +15,6 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
   const {
     handleSubmit,
     register,
-    reset,
     formState: { isSubmitSuccessful, errors },
   } = useForm<TodoFormData>({
     resolver: zodResolver(schema),
