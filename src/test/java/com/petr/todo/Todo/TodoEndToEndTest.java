@@ -21,7 +21,7 @@ import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
-//import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -205,4 +205,34 @@ public class TodoEndToEndTest {
     //         .then()
     //         .statusCode(HttpStatus.BAD_REQUEST.value());
     // }
+
+    @Test
+    public void getTodoItem_ValidId_MatchesJsonSchema() {
+        TodoItem todo = todos.get(0); // Fetch an existing todo
+
+        given()
+            .when()
+            .get("/todos/" + todo.getId())
+            .then()
+            .statusCode(HttpStatus.OK.value());
+            //.body(matchesJsonSchemaInClasspath("schemas/todo-schema.json"));
+    }
+
+    @Test
+    public void deleteTodoItem_ExistingId_ReturnsNoContent() {
+        TodoItem todo = todos.get(0); // Fetch an existing todo
+
+        given()
+            .when()
+            .delete("/todos/" + todo.getId())
+            .then()
+            .statusCode(HttpStatus.NO_CONTENT.value());
+
+        // Verify the todo is deleted
+        given()
+            .when()
+            .get("/todos/" + todo.getId())
+            .then()
+            .statusCode(HttpStatus.NOT_FOUND.value());
+    }
 }
