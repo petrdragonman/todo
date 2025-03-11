@@ -54,7 +54,13 @@ const TodosPage = () => {
   const handleIsDone = async (id: number, isDone: boolean) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
-      const updatedTodo = await updateTodo(id, { ...todo, isDone });
+      console.log("todo in isDone: ", todo);
+      const categoryTitle: String = todo.category.title;
+      const updatedTodo = await updateTodo(id, {
+        ...todo,
+        isDone,
+        categoryTitle,
+      });
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
       );
