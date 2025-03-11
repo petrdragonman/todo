@@ -15,14 +15,17 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
   const {
     handleSubmit,
     register,
-    reset,
     formState: { isSubmitSuccessful, errors },
+    reset,
   } = useForm<TodoFormData>({
     resolver: zodResolver(schema),
     defaultValues: existingData || {},
   }); // TodoFormData
 
-  isSubmitSuccessful && reset();
+  //isSubmitSuccessful && reset();
+  if (!existingData) {
+    isSubmitSuccessful && reset();
+  }
 
   //console.log("Default values :", existingData);
   const handleFormSubmit = (data: TodoFormData) => {

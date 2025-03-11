@@ -54,7 +54,13 @@ const TodosPage = () => {
   const handleIsDone = async (id: number, isDone: boolean) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
-      const updatedTodo = await updateTodo(id, { ...todo, isDone });
+      console.log("todo in isDone: ", todo);
+      const categoryTitle: String = todo.category.title;
+      const updatedTodo = await updateTodo(id, {
+        ...todo,
+        isDone,
+        categoryTitle,
+      });
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
       );
@@ -71,19 +77,28 @@ const TodosPage = () => {
 
   const onFormSubmitTodoUpdate = async (data: any, id?: number) => {
     console.log("Form Data:", data); // Debugging
+    console.log("passed id:", id); // Debugging
     const todo = todos.find((todo) => todo.id === id);
     console.log("Found Todo:", todo); // Debugging
 
     if (todo) {
-      const categoryId = todo.category.id;
-      const category = categories.find((cat) => cat.id == categoryId);
+      //onst categoryId = todo.category.id;
+      const category = categories.find(
+        (cat) => cat.title == data.categoryTitle
+      );
       if (category) {
         const test = { ...todo, title: data.title, category: category };
-        console.log(test);
+        console.log("TEST 1", test);
+        const test2 = {
+          ...todo,
+          title: data.title,
+          categoryTitle: category.title,
+        };
+        console.log("TEST 2: ", test2);
         const updatedTodo = await updateTodo(todo.id, {
-          ...todo, // Spread the existing todo properties
-          title: data.title, // Update the title
-          category: category,
+          ...todo,
+          title: data.title,
+          categoryTitle: category.title,
         });
         setTodos((prevTodos) =>
           prevTodos.map((todo) =>
