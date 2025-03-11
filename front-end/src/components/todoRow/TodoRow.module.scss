@@ -21,6 +21,10 @@
   align-items: center;
   gap: 10px;
   width: 100%;
+  .completed_icon {
+    display: flex;
+    justify-content: center;
+  }
 }
 .group_priority {
   display: flex;

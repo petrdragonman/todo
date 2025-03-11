@@ -1,7 +1,7 @@
 import { Category } from "../services/categories-service";
 import { Todo } from "../services/todos-service";
 import { TodoFormData } from "./TodoForm/schema";
-import TodoRow from "./todoRow/TodoRow";
+import TodoRow from "./TodoRow/TodoRow";
 
 interface TodosListProps {
   todos: Todo[];

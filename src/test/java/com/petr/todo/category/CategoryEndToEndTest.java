@@ -38,8 +38,8 @@ public class CategoryEndToEndTest {
         repo.deleteAll();
         categories.clear();
 
-        // set up data for rests
-        // be carefullto make sure you are saving valid data.
+        // set up data for tests
+        // be careful to make sure you are saving valid data.
         Category category1 =  new Category();
         category1.setTitle("School");
         this.repo.save(category1);

@@ -35,7 +35,7 @@ const TodoRow = ({
   return (
     <div className={classes.row}>
       <section className={classes.group_todo}>
-        <span onClick={handleIsDone}>
+        <span onClick={handleIsDone} className={classes.completed_icon}>
           {todo.isDone ? (
             <img src="checked.svg" alt="check box - checked" width={22} />
           ) : (
