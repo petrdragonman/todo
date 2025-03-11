@@ -11,6 +11,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.petr.todo.todoItem.TodoItem;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
