@@ -1,5 +1,5 @@
 package com.petr.todo.config;
-import java.util.List;
+//import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 import com.petr.todo.category.Category;
 import com.petr.todo.category.CategoryRepository;
-import com.petr.todo.todoItem.TodoItem;
+//import com.petr.todo.todoItem.TodoItem;
 import com.petr.todo.todoItem.TodoItemRepository;
 
 @Component
 @Profile("dev")
 public class DataSeeder implements CommandLineRunner {
 
-    private final TodoItemRepository todoRepo;
+    //private final TodoItemRepository todoRepo;
     private final CategoryRepository categoryRepo;
     private final Faker faker= new Faker();
 
     public DataSeeder(TodoItemRepository todoRepo, CategoryRepository categoryRepository) {
-        this.todoRepo = todoRepo;
+        //this.todoRepo = todoRepo;
         this.categoryRepo = categoryRepository;
     }
 
