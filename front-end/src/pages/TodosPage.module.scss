@@ -2,6 +2,8 @@
   display: flex;
   align-self: center;
   padding-bottom: 50px;
+  color: #fb7431;
+  font-size: 2em;
 }
 
 .categories_container {
@@ -11,8 +13,10 @@
   gap: 0.6em;
   padding-bottom: 30px;
   &__title {
+    font-size: 1.2em;
     margin: 0;
     padding: 0;
+    color: #fb7431;
     display: flex;
     justify-content: flex-start;
     padding: 6px 4px;
@@ -30,37 +34,28 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  //gap: em;
   padding-bottom: 30px;
   &__title {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-start;
-    //padding: 6px 4px;
   }
 }
 
 .container {
-  //   margin: 0;
-  //   display: flex;
-  //   place-items: center;
-  //   min-width: 320px;
-  //   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
   gap: 6px;
-  //border: 1px solid red;
 }
 
 .forms {
   width: 80%;
   display: flex;
   justify-content: flex-start;
-  //padding-bottom: 10px;
 }
 
 .listContainer {

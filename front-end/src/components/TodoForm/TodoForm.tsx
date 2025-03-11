@@ -7,7 +7,6 @@ import { schema, TodoFormData } from "./schema";
 interface TodoFormProps {
   //onSubmit: (...args: any[]) => any;
   onSubmit: (data: TodoFormData, id?: number) => unknown;
-  //categories: Category[];
   categories: { id: number; title: string }[];
   existingData?: TodoFormData & { id?: number };
 }
@@ -34,8 +33,9 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className={classes.field_title}>
+      <div className={classes.text_field}>
         <input
+          className={classes.input}
           type="text"
           id="todoInput"
           placeholder="type new todo..."
@@ -46,7 +46,11 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         )}
       </div>
       <div className={classes.field}>
-        <select id="categoryInput" {...register("categoryTitle")}>
+        <select
+          className={classes.input}
+          id="categoryInput"
+          {...register("categoryTitle")}
+        >
           {categories.map((cat) => (
             <option key={cat.id} value={cat.title}>
               {cat.title}
@@ -60,7 +64,7 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         )}
       </div>
       <div className={classes.field}>
-        <Button variant="PRIMARY" type="submit">
+        <Button variant="PRIMARY" type="submit" className={classes.button}>
           {existingData ? "Update" : "Create"}
         </Button>
       </div>
