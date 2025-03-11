@@ -1,6 +1,6 @@
+import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router";
 import TodosPage from "./pages/TodosPage";
-import "./index.css";
 
 function App() {
   return (

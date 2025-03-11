@@ -25,7 +25,7 @@ const CategoryForm = ({ onSubmit }: CategoryFormProps) => {
           className={classes.input}
           type="text"
           id="catregoryInput"
-          placeholder="type new category"
+          placeholder="type new category..."
           {...register("title")}
         />
         {errors.title && (
