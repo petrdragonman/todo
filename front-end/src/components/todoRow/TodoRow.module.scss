@@ -1,12 +1,10 @@
 .row {
-  font-size: 0.9em;
+  font-size: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  //align-items: center;
+  align-items: flex-end;
   width: 100%;
-  //border: 1px solid blue;
-  //gap: 20px;
 }
 
 .cell {
@@ -15,7 +13,6 @@
 }
 .title {
   width: 300px;
-  //border: 1px solid red;
 }
 
 .group_todo {
@@ -24,20 +21,17 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  //border: 1px solid blue;
 }
 .group_priority {
   display: flex;
   align-self: center;
   gap: 10px;
-  //border: 1px solid blue;
 }
 .group_icons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
-  //border: 1px solid blue;
 }
 
 .category {

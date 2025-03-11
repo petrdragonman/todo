@@ -22,6 +22,7 @@ const CategoryForm = ({ onSubmit }: CategoryFormProps) => {
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.field}>
         <input
+          className={classes.input}
           type="text"
           id="catregoryInput"
           placeholder="type new category"
@@ -32,7 +33,7 @@ const CategoryForm = ({ onSubmit }: CategoryFormProps) => {
         )}
       </div>
       <div>
-        <Button variant="PRIMARY" type="submit">
+        <Button variant="PRIMARY" type="submit" className={classes.button}>
           Create
         </Button>
       </div>

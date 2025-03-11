@@ -19,7 +19,6 @@ import {
 import CategoryList from "../components/CategoryList";
 
 const TodosPage = () => {
-  //const [isDone, setIsDone] = useState(false);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   useEffect(() => {
@@ -35,13 +34,11 @@ const TodosPage = () => {
   }, []);
 
   const onFormSubmit = async (data: any) => {
-    //console.log(data);
     const newCategory = await createCategory(data);
     setCategories((prevCategories) => [...prevCategories, newCategory]);
   };
 
   const onTodoFormSubmit = async (data: any) => {
-    //console.log(data);
     const newTodo = await createTodo(data);
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
@@ -75,26 +72,13 @@ const TodosPage = () => {
     }
   };
 
-  const onFormSubmitTodoUpdate = async (data: any, id?: number) => {
-    console.log("Form Data:", data); // Debugging
-    console.log("passed id:", id); // Debugging
+  const onTodoUpdateFormSubmit = async (data: any, id?: number) => {
     const todo = todos.find((todo) => todo.id === id);
-    console.log("Found Todo:", todo); // Debugging
-
     if (todo) {
-      //onst categoryId = todo.category.id;
       const category = categories.find(
         (cat) => cat.title == data.categoryTitle
       );
       if (category) {
-        const test = { ...todo, title: data.title, category: category };
-        console.log("TEST 1", test);
-        const test2 = {
-          ...todo,
-          title: data.title,
-          categoryTitle: category.title,
-        };
-        console.log("TEST 2: ", test2);
         const updatedTodo = await updateTodo(todo.id, {
           ...todo,
           title: data.title,
@@ -121,7 +105,6 @@ const TodosPage = () => {
           <CategoryForm onSubmit={onFormSubmit} />
         </section>
       </section>
-
       <section className={classes.todos_container}>
         <p className={classes.categories_container__title}>TODOS</p>
         <section className={classes.forms}>
@@ -131,10 +114,9 @@ const TodosPage = () => {
           <TodosList
             todos={todos}
             onDelete={handleDelete}
-            onChange={handleIsDone}
+            onIsDone={handleIsDone}
             onDuplicate={handleDuplicate}
-            //onTodo={handleTodo}
-            onSubmit={onFormSubmitTodoUpdate}
+            onSubmit={onTodoUpdateFormSubmit}
             categories={categories}
           />
         </section>

@@ -6,9 +6,8 @@ import TodoRow from "./todoRow/TodoRow";
 interface TodosListProps {
   todos: Todo[];
   onDelete: (id: number) => void; // onDelete
-  onChange: (id: number, isDone: boolean) => void;
+  onIsDone: (id: number, isDone: boolean) => void;
   onDuplicate: (id: number) => void;
-  //onTodo: (id: number, data: Todo) => void;
   onSubmit: (data: TodoFormData, id?: number) => unknown;
   categories: Category[];
 }
@@ -16,9 +15,8 @@ interface TodosListProps {
 const TodosList = ({
   todos,
   onDelete,
-  onChange,
+  onIsDone,
   onDuplicate,
-  //onTodo,
   onSubmit,
   categories,
 }: TodosListProps) => {
@@ -33,9 +31,8 @@ const TodosList = ({
           key={todo.id}
           todo={todo}
           onDelete={onDelete}
-          onChange={onChange}
-          onClick={onDuplicate}
-          //onTodo={onTodo}
+          onIsDone={onIsDone}
+          onDuplicate={onDuplicate}
           onSubmit={onSubmit}
           categories={categories}
         />
