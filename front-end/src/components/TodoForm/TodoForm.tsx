@@ -3,9 +3,9 @@ import classes from "./TodoForm.module.scss";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema, TodoFormData } from "./schema";
+import { Todo } from "../../services/todos-service";
 
 interface TodoFormProps {
-  //onSubmit: (...args: any[]) => any;
   onSubmit: (data: TodoFormData, id?: number) => unknown;
   categories: { id: number; title: string }[];
   existingData?: TodoFormData & { id?: number };
@@ -21,13 +21,13 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
     defaultValues: existingData || {},
   }); // TodoFormData
 
-  //isSubmitSuccessful && reset();
   if (!existingData) {
     isSubmitSuccessful && reset();
   }
 
-  //console.log("Default values :", existingData);
   const handleFormSubmit = (data: TodoFormData) => {
+    //todoId = todo.id;
+    //onSubmit(data, existingData?.id);
     onSubmit(data, existingData?.id);
   };
 
@@ -49,17 +49,17 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         <select
           className={classes.input}
           id="categoryInput"
-          {...register("categoryTitle")}
+          {...register("categoryId")}
         >
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.title}>
+            <option key={cat.id} value={cat.id}>
               {cat.title}
             </option>
           ))}
         </select>
-        {errors?.categoryTitle && (
+        {errors?.categoryId && (
           <small className={classes.error_text}>
-            {errors?.categoryTitle?.message}
+            {errors?.categoryId?.message}
           </small>
         )}
       </div>
