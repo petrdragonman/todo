@@ -3,7 +3,6 @@ import classes from "./TodoForm.module.scss";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema, TodoFormData } from "./schema";
-import { Todo } from "../../services/todos-service";
 
 interface TodoFormProps {
   onSubmit: (data: TodoFormData, id?: number) => unknown;
@@ -26,8 +25,6 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
   }
 
   const handleFormSubmit = (data: TodoFormData) => {
-    //todoId = todo.id;
-    //onSubmit(data, existingData?.id);
     onSubmit(data, existingData?.id);
   };
 
@@ -64,7 +61,7 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         )}
       </div>
       <div className={classes.field}>
-        <Button variant="PRIMARY" type="submit" className={classes.button}>
+        <Button variant="primary" type="submit">
           {existingData ? "Update" : "Create"}
         </Button>
       </div>

@@ -52,5 +52,9 @@ public class CategoryService {
         return true;
     }
 
+    public String toCapitalise(String categoryTitle) {
+        return categoryTitle.substring(0, 1).toUpperCase() + categoryTitle.substring(1).toLowerCase();
+    }
+
     
 }

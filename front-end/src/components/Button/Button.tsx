@@ -1,5 +1,7 @@
+import classes from "./Button.module.scss";
+
 interface ButtonPartialProps {
-  variant: "PRIMARY" | "SUCCESS" | "DANGER";
+  variant: "primary" | "success" | "danger";
 }
 
 type ButtonProps = ButtonPartialProps &
@@ -9,7 +11,15 @@ type ButtonProps = ButtonPartialProps &
   >;
 
 const Button = ({ variant, children, ...rest }: ButtonProps) => {
-  return <button {...rest}>{children}</button>;
+  const btnClasses = [classes.btn];
+  if (variant) {
+    btnClasses.push(classes[variant]);
+  }
+  return (
+    <button {...rest} className={btnClasses.join(" ")}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

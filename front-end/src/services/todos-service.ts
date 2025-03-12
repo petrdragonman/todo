@@ -25,7 +25,6 @@ export const deleteTodoById = async (id: number) => {
     if (!response.ok) {
       throw new Error("Failed to delete item");
     }
-    console.log("Item deleted successfully");
   } catch (error) {
     console.error("Error deleting item: ", error);
   }
