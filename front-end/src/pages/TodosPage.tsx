@@ -51,12 +51,9 @@ const TodosPage = () => {
   const handleIsDone = async (id: number, isDone: boolean) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
-      console.log("todo in isDone: ", todo);
-      const categoryTitle: String = todo.category.title;
       const updatedTodo = await updateTodo(id, {
-        ...todo,
         isDone,
-        categoryTitle,
+        categoryId: todo.category.id,
       });
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
@@ -75,21 +72,12 @@ const TodosPage = () => {
   const onTodoUpdateFormSubmit = async (data: any, id?: number) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
-      const category = categories.find(
-        (cat) => cat.title == data.categoryTitle
+      const updatedTodo = await updateTodo(todo.id, data);
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === updatedTodo.id ? updatedTodo : todo
+        )
       );
-      if (category) {
-        const updatedTodo = await updateTodo(todo.id, {
-          ...todo,
-          title: data.title,
-          categoryTitle: category.title,
-        });
-        setTodos((prevTodos) =>
-          prevTodos.map((todo) =>
-            todo.id === updatedTodo.id ? updatedTodo : todo
-          )
-        );
-      }
     }
   };
 

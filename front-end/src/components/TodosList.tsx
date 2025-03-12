@@ -5,7 +5,7 @@ import TodoRow from "./TodoRow/TodoRow";
 
 interface TodosListProps {
   todos: Todo[];
-  onDelete: (id: number) => void; // onDelete
+  onDelete: (id: number) => void;
   onIsDone: (id: number, isDone: boolean) => void;
   onDuplicate: (id: number) => void;
   onSubmit: (data: TodoFormData, id?: number) => unknown;

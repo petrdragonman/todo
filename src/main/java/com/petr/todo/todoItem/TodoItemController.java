@@ -32,7 +32,6 @@ public class TodoItemController {
 
     @PostMapping
     public ResponseEntity<TodoItem> createTodoItem(@RequestBody @Valid CreateTodoItemDTO data) throws ServiceValidationException {
-        //TodoItem newTodoItem = this.todoItemService.createTodoItem(data);
         TodoItem newTodoItem = this.todoItemService.createTodoItem(data);
         return new ResponseEntity<TodoItem>(newTodoItem, HttpStatus.CREATED);
     }
