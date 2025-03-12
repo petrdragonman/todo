@@ -5,14 +5,10 @@ public class UpdateTodoItemDTO {
     @Pattern(regexp = ".*\\S.*", message = "Title can not be empty")
     private String title;
     
-    //private Priority priority;
-    
     private Boolean isDone;
 
-    //private Long categoryId;
-    private String categoryTitle;
-
-    //private Date created;
+    private Long categoryId;
+    //private String categoryTitle;
 
     public String getTitle() {
         return title;
@@ -30,11 +26,13 @@ public class UpdateTodoItemDTO {
         this.isDone = isDone;
     }
 
-    public String getCategoryTitle() {
-        return categoryTitle;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryTitle(String categoryTitle) {
-        this.categoryTitle = categoryTitle;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
+
+
 }

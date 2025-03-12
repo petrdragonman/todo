@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { schema, TodoFormData } from "./schema";
 
 interface TodoFormProps {
-  //onSubmit: (...args: any[]) => any;
   onSubmit: (data: TodoFormData, id?: number) => unknown;
   categories: { id: number; title: string }[];
   existingData?: TodoFormData & { id?: number };
@@ -21,12 +20,10 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
     defaultValues: existingData || {},
   }); // TodoFormData
 
-  //isSubmitSuccessful && reset();
   if (!existingData) {
     isSubmitSuccessful && reset();
   }
 
-  //console.log("Default values :", existingData);
   const handleFormSubmit = (data: TodoFormData) => {
     onSubmit(data, existingData?.id);
   };
@@ -49,22 +46,22 @@ const TodoForm = ({ onSubmit, categories, existingData }: TodoFormProps) => {
         <select
           className={classes.input}
           id="categoryInput"
-          {...register("categoryTitle")}
+          {...register("categoryId")}
         >
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.title}>
+            <option key={cat.id} value={cat.id}>
               {cat.title}
             </option>
           ))}
         </select>
-        {errors?.categoryTitle && (
+        {errors?.categoryId && (
           <small className={classes.error_text}>
-            {errors?.categoryTitle?.message}
+            {errors?.categoryId?.message}
           </small>
         )}
       </div>
       <div className={classes.field}>
-        <Button variant="PRIMARY" type="submit" className={classes.button}>
+        <Button variant="primary" type="submit">
           {existingData ? "Update" : "Create"}
         </Button>
       </div>

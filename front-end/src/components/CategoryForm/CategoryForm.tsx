@@ -33,7 +33,7 @@ const CategoryForm = ({ onSubmit }: CategoryFormProps) => {
         )}
       </div>
       <div>
-        <Button variant="PRIMARY" type="submit" className={classes.button}>
+        <Button variant="primary" type="submit">
           Create
         </Button>
       </div>

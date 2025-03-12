@@ -48,7 +48,8 @@ const TodoRow = ({
           existingData={{
             id: todo.id,
             title: todo.title,
-            categoryTitle: todo.category.title,
+            categoryId: todo.category.id,
+            //categoryTitle: todo.category.title,
           }}
         />
         <img

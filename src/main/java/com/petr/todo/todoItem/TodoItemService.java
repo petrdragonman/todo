@@ -26,17 +26,10 @@ public class TodoItemService {
     }
 
     public TodoItem createTodoItem(CreateTodoItemDTO data) throws ServiceValidationException {
-        // TodoItem newTodoItem = new TodoItem();
-        // newTodoItem.setTitle(data.getTitle().trim());
-        // newTodoItem.setCreated(data.getCreated());
-        // newTodoItem.setIsDone(data.getIsDone());
-        // newTodoItem.setPriority(data.getPriority());
         ValidationErrors errors = new ValidationErrors();
-
-        //Category foundCategory = this.categoryService.getById(data.getCategoryId()).orElse(null);
-        Category foundCategory = this.categoryService.getByTitle(data.getCategoryTitle()).orElse(null);
+        Category foundCategory = this.categoryService.getById(data.getCategoryId()).orElse(null);
         if(foundCategory == null) {
-           errors.addError("category", "Could not find category with id: " + data.getCategoryTitle());
+           errors.addError("category", "Could not find category with id: " + data.getCategoryId());
         }
         TodoItem newTodoItem = mapper.map(data, TodoItem.class);
         newTodoItem.setCategory(foundCategory);
@@ -45,9 +38,9 @@ public class TodoItemService {
 
     public Optional<TodoItem> updateById(Long id, UpdateTodoItemDTO data) {
         ValidationErrors errors = new ValidationErrors();
-        Category foundCategory = this.categoryService.getByTitle(data.getCategoryTitle()).orElse(null);
+        Category foundCategory = this.categoryService.getById(data.getCategoryId()).orElse(null);
         if(foundCategory == null) {
-            errors.addError("category", "Could not find category with id: " + data.getCategoryTitle());
+            errors.addError("category", "Could not find category with id: " + data.getCategoryId());
         }
         Optional<TodoItem> result = this.getById(id);
         if(result.isEmpty()) {

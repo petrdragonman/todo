@@ -23,7 +23,7 @@ public class TodoItem extends BaseEntity {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "category_title", nullable = false) // Foreign key in the Categories table
+    @JoinColumn(name = "category_id", nullable = false) // Foreign key in the Categories table
     @JsonIgnoreProperties({"category", "todos"})
     private Category category;
     
@@ -44,14 +44,6 @@ public class TodoItem extends BaseEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    // public Priority getPriority() {
-    //     return priority;
-    // }
-
-    // public void setPriority(Priority priority) {
-    //     this.priority = priority;
-    // }
 
     public Boolean getIsDone() {
         return isDone;
