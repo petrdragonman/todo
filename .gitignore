@@ -35,3 +35,4 @@ build/
 ### todo app ###
 .application.properties
 .qodo
+.env
